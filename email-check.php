@@ -8,12 +8,10 @@ if (!isset($argv[1])) {
 // Args
 $email = $argv[1];
 
-// Regex check
-$regex = "/[\w]{3,64}[@]{1}[\w]{3,255}[.]{1}[a-z]{2,3}/m";
-preg_match($regex, $email, $match);
+$pattern = '/[\w]{3,64}[@]{1}[\w]{3,255}[.]{1}[a-z]{2,3}/m';
 
 // Result
-if (isset($match[0]) && $match[0] === $email) {
+if (preg_match($pattern, $email)) {
     echo "Het ingevoerde email is: '{$email}' en dat is juist";
 } else {
     echo "Het ingevoerde email is: '{$email}' en dat is onjuist";
